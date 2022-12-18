@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Registration Form</title>
+<style type="text/css">
+	body{
+		background: #c94b4b;  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, #4b134f, #c94b4b);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, #4b134f, #c94b4b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	}
+	h1{
+	  font-family: 'sans-serif';
+	  font-weight: bold;
+	  color: silver;
+	  font-size: 60px;
+	  text-shadow: 0px 0px 30px #000;
+	}
+	.main{
+		position: fixed;
+	    width: 540px;
+	    height: 500px;
+	    background: transparent;
+	    border: 3px solid silver;
+	    box-shadow: 0px 0px 1000px rgba(10, 155, 41, 0.29);
+	    border-radius: 20px;
+	    top: 140px;
+	    left: 5%;
+	}
+	.lbl{
+	  color: #FFF;
+	  font-size: 25px;
+	  font-family: 'times new roman';
+	  text-align: left;
+	  padding-left: 25px;
+	}
+	.inp{
+	  position: absolute;
+	  left: 260px;
+	  background: transparent;
+	  font-size: 15px;
+	  font-family: 'times new roman';
+	  color: #FFF;
+	  border: 2px solid silver;
+	  border-radius: 3px;
+	  width: 250px;
+	  height: 20px;
+	}
+	.spn{
+	  position: absolute;
+	  left: 30px;
+	  font-family: 'times new roman';
+	  font-size: 30px;
+	  font-style: bold;
+	  color: white;
+	}
+	.alt{
+		position: fixed;
+	    width: 540px;
+	    height: 500px;
+	    background: transparent;
+	    border: 3px solid silver;
+	    box-shadow: 0px 0px 1000px rgba(10, 155, 41, 0.29);
+	    border-radius: 20px;
+	    top: 140px;
+	    left: 60%;
+	}
+	.footer{
+		background-color:rgba(0,0,0,0.9);
+		width:100%;
+		padding:5px 0px;
+		bottom:0;
+		position:fixed;
+		left: 0px;
+		font-family:'d';
+		font-size:15px;
+		color:#FFF;
+		letter-spacing: 5px;
+	}
+</style>
+<script type="text/javascript">
+function validation(){
+	var user = document.getElementById('user').value;
+	var mobileNumber = document.getElementById('mobileNumber').value;
+	var emails = document.getElementById('emails').value;
+	var pass = document.getElementById('pass').value;
+	var confirmpass = document.getElementById('conpass').value;
+	var flag = 1;
+
+	if(user == ""){
+		document.getElementById('username').innerHTML ="Please fill the name";
+		flag = 0;;
+	}
+	else if(!isNaN(user)){
+		document.getElementById('username').innerHTML ="Only alphabates are allowed";
+		flag = 0;;
+	}
+	else{
+		document.getElementById('username').innerHTML ="&#9989;";
+
+	}
+
+
+	if(mobileNumber == ""){
+		document.getElementById('mobileno').innerHTML ="Please fill the mobile Number";
+		flag = 0;;
+	}
+	else if(isNaN(mobileNumber)){
+		document.getElementById('mobileno').innerHTML ="Write digits only not characters";
+		flag = 0;;
+	}
+	else if(mobileNumber.length!=13){
+		document.getElementById('mobileno').innerHTML ="Mobile Number must be 10 digits only";
+		flag = 0;;
+	}
+	else{
+		document.getElementById('mobileno').innerHTML ="&#9989;";
+	}
+
+
+	if(emails == ""){
+		document.getElementById('emailids').innerHTML ="Please fill the email";
+		flag = 0;;
+	}
+	else if(emails.indexOf('@') <= 0 ){
+		document.getElementById('emailids').innerHTML ="@ Invalid Position";
+		flag = 0;;
+	}
+
+	else if((emails.charAt(emails.length-4)!='.') && (emails.charAt(emails.length-3)!='.')){
+		document.getElementById('emailids').innerHTML =".(Dot) Invalid Position";
+		flag = 0;;
+	}
+	else{
+		document.getElementById('emailids').innerHTML ="&#9989;";
+
+	}
+
+
+	if(pass == ""){
+		document.getElementById('passwords').innerHTML ="Please fill the password";
+		flag = 0;;
+	}
+	else if((pass.length <= 5) || (pass.length > 20)) {
+		document.getElementById('passwords').innerHTML ="Passwords lenght must be between 5 and 20";
+		flag = 0;;	
+	}
+	else{
+		document.getElementById('passwords').innerHTML ="&#9989;";
+	}
+
+
+
+	if(confirmpass == ""){
+		document.getElementById('confrmpass').innerHTML ="Please fill the confirm password";
+		flag = 0;;
+	}
+	else if(pass!=confirmpass){
+		document.getElementById('confrmpass').innerHTML ="Password does not match";
+		flag = 0;;
+	}
+	else{
+		document.getElementById('confrmpass').innerHTML ="&#9989;";
+	}
+	if (flag==0) {
+		return false;
+	}
+	}
+</script>
+</head>
+<body>
+	<h1 align="center">Registration Form</h1>
+<div class="main"><br>
+	<form action="#" onsubmit="return validation()">
+		<label for="user" class="lbl"> Full Name: </label>
+		<input type="text" name="user" class="inp" id="user" placeholder=" Enter Your Name"><br>
+		<br><br>
+		<br>
+
+		<label class="lbl"> Mobile Number: </label>
+		<input type="text" name="mobile" class="inp" id="mobileNumber" value="+91" placeholder=" Enter Your Number"><br>
+		<br><br>
+		<br>
+
+		<label class="lbl"> Email: </label>
+		<input type="text" name="email" class="inp" id="emails" placeholder=" Enter Your Email"><br>
+		<br><br>
+		<br>
+
+		<label class="lbl">New Password: </label>
+		<input type="password" name="pass" class="inp" id="pass" placeholder=" Enter Password"><br>
+		<br><br>
+		<br>
+
+		<label class="lbl"> Confirm Password: </label>
+		<input type="password" name="conpass" class="inp" id="conpass" placeholder=" Re-Enter Password"><br>
+		<br><br>
+		<br>
+
+		<div align="center" class="btn">
+			<input type="submit" name="submit" value="Submit" class="sub">
+			<input type="reset" name="reset" value="Reset" class="res">
+		</div>
+	</form>
+	<br>
+	<br>
+</div>
+<div class="alt">
+	<br><br><br>	<span id="username" class="spn"> </span>
+	<br><br><br><br>
+	<span id="mobileno" class="spn"> </span>
+	<br><br><br><br>
+	<span id="emailids" class="spn"> </span>
+	<br><br><br><br>
+	<span id="passwords" class="spn"> </span>
+	<br><br><br><br>
+	<span id="confrmpass" class="spn"> </span>
+</div>
+<div class="footer">
+<footer align="center"> &copy; Inshul Zade | Department of Electrical Engineering | USN: EE20008 | S.B. Jain, Nagpur</footer>	
+</div>
+</body>
+</html>
